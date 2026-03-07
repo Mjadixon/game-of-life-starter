@@ -20,4 +20,12 @@ For a space that is unpopulated (0):
 
 Of course, checking indexes that are out-of-bounds will throw errors. You can get creative, but you may find that there is no "clean" solution to this. You'll end up with a bunch of if/else statements...
 
+## VS Code Set up
+You can run Processing sketches right in VS Code! You'll need to install an extension.
+
+Go to your extensions and search for "Processing" and look for the extension that is from the Processing Foundation. It looks like this:
+
+<img src="image.png" alt="Description" height="50">
+
+
 ### Good luck!
