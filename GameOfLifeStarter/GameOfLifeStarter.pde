@@ -16,7 +16,7 @@ void setup() {
 
 void draw() {
   showGrid(); // STEP 2 - Implement this method so you can see your 2D array
-  // grid = calcNextGrid(); // uncomment this after you get showGrid() working
+  grid = calcNextGrid(); // uncomment this after you get showGrid() working
 }
 
 int[][] calcNextGrid() {
@@ -35,10 +35,15 @@ int countNeighbors(int y, int x) {
 
   return n;
 }
-
+int r = 250;
+int g = 0;
+int b = 0;
 void showGrid() {
   // your code here
   // use square() to represent each cell
+  
+  square(1,1,1);
+  fill(r,g,b);
   // use fill(r, g, b) to control color: black for empty, red for filled (or alive)
   // each square (cell) has a width and height of SPACING. 
   // you will need to calculate the x and y position as you loop through the grid
