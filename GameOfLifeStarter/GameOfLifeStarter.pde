@@ -8,7 +8,6 @@ int g = 142;
 int b = 172;
 int x = 0;
 int y = 0;
-boolean show = true;
 void setup() {
   size(800, 600); // adjust accordingly, make sure it's a multiple of SPACING
   noStroke(); // don't draw the edges of each cell
@@ -32,14 +31,23 @@ void setup() {
 
 void draw() {
   showGrid(); // STEP 2 - Implement this method so you can see your 2D array
-  // grid = calcNextGrid(); // uncomment this after you get showGrid() working
+  grid = calcNextGrid(); // uncomment this after you get showGrid() working
 }
 
 int[][] calcNextGrid() {
   int[][] nextGrid = new int[grid.length][grid[0].length];
   for (int r = 0; r<grid.length; r++) {//- 1 due to where it starting.
     for (int c = 0; c<grid[0].length; c++) {
+      int neighbor = countNeighbors(r,c);
+      int cell = grid[r][c];
 
+      if(cell == 1&&(neighbor == 2 || neighbor == 3)){
+        nextGrid[r][c] = 1;
+      } else if(cell == 1 && neighbor == 0 || neighbor ==3){
+        nextGrid[r][c] = 1;
+      } else {
+        nextGrid[r][c] = 0;
+      }
     }
   }
 
@@ -52,8 +60,8 @@ int countNeighbors(int y, int x) {
   // your code here
   // don't check out-of-bounds cells!
   int n = 0; // don't count yourself!
-  for(int rowEdge = -1; rowEdge <=0;rowEdge++ ){
-    for(int colEdge = -1; colEdge<=0;colEdge++){
+  for(int rowEdge = -1; rowEdge <=1;rowEdge++ ){
+    for(int colEdge = -1; colEdge<=1;colEdge++){
       int rowBounds = y+rowEdge;
       int colBounds = x+colEdge;
       if((rowEdge == 0 && colEdge == 0)){
