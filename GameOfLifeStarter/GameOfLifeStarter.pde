@@ -37,7 +37,7 @@ void draw() {
 
 int[][] calcNextGrid() {
   int[][] nextGrid = new int[grid.length][grid[0].length];
-  for (int r = 0; r<grid.length-1; r++) {//- 1 due to where it starting.
+  for (int r = 0; r<grid.length; r++) {//- 1 due to where it starting.
     for (int c = 0; c<grid[0].length; c++) {
     }
   }
