@@ -1,17 +1,17 @@
 import java.util.Arrays;
 
-final int SPACING = 20; // each cell's width/height //<>// //<>//
+final int SPACING = 5; // each cell's width/height //<>// //<>//
 final float DENSITY = 0.1; // how likely each cell is to be alive at the start
 int[][] grid; // the 2D array to hold 0's and 1's
-
-int g = 142;
-int b = 172;
+int t = 10;
+int g = 0;
+int b = 0;
 int x = 0;
 int y = 0;
 void setup() {
   size(800, 600); // adjust accordingly, make sure it's a multiple of SPACING
   noStroke(); // don't draw the edges of each cell
-  frameRate(10); // controls speed of regeneration
+  frameRate(t); // controls speed of regeneration
   grid = new int[height / SPACING][width / SPACING];
 
 
@@ -30,7 +30,8 @@ void setup() {
 }
 
 void draw() {
-  showGrid(); // STEP 2 - Implement this method so you can see your 2D array
+  showGrid(g,b);
+   // STEP 2 - Implement this method so you can see your 2D array
   grid = calcNextGrid(); // uncomment this after you get showGrid() working
 }
 
@@ -42,10 +43,14 @@ int[][] calcNextGrid() {
       int cell = grid[r][c];
 
       if(cell == 1&&(neighbor == 2 || neighbor == 3)){
+        //alive and healthy
         nextGrid[r][c] = 1;
       } else if(cell == 1 && neighbor == 0 || neighbor ==3){
+        //dying
+        
         nextGrid[r][c] = 1;
       } else {
+        //dead
         nextGrid[r][c] = 0;
       }
     }
@@ -65,7 +70,7 @@ int countNeighbors(int y, int x) {
       int rowBounds = y+rowEdge;
       int colBounds = x+colEdge;
       if((rowEdge == 0 && colEdge == 0)){
-        System.out.print("you");
+   
       }else{
       if( rowBounds >= 0 && rowBounds<grid.length && colBounds >= 0 &&  colBounds < grid[0].length){
         n+=grid[rowBounds][colBounds];
@@ -76,18 +81,31 @@ int countNeighbors(int y, int x) {
       
   return n;
 }
-
-void showGrid() {
+void keyPressed(){
+  if(key == CODED){
+if(keyPressed == true && keyCode == UP ){
+        t++;
+      } else if(keyPressed == true && keyCode == DOWN){
+        t--;
+      }
+  }
+  
+}
+void showGrid(int g, int b) {
   // your code here
   // use square() to represent each cell
   for (int r = 0; r<grid.length; r++) {
     for (int c = 0; c<grid[0].length; c++) {
       if (grid[r][c] == 1) {
-        fill(255, 0, 0);
+        fill(255, g, b);
+        if(mousePressed == true){
+        fill(255,g+(int)Math.random()*100,b+(int)Math.random()*100);
+      }
       } else {
         fill(0, 0, 0);
       }
       square(c*SPACING, r*SPACING, SPACING);
+      
     }
   }
 
