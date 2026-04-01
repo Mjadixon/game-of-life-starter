@@ -59,7 +59,7 @@ int countNeighbors(int y, int x) {
       if((rowEdge == 0 && colEdge == 0)){
         System.out.print("you");
       }else{
-      if( rowBounds >= 0 && rowBounds<grid.length && colEdge >= 0 &&  colBounds < grid[0].length){
+      if( rowBounds >= 0 && rowBounds<grid.length && colBounds >= 0 &&  colBounds < grid[0].length){
         n+=grid[rowBounds][colBounds];
       }
     }
