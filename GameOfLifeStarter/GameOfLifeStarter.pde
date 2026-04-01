@@ -39,6 +39,7 @@ int[][] calcNextGrid() {
   int[][] nextGrid = new int[grid.length][grid[0].length];
   for (int r = 0; r<grid.length-1; r++) {//- 1 due to where it starting.
     for (int c = 0; c<grid[0].length; c++) {
+
     }
   }
 
@@ -55,13 +56,16 @@ int countNeighbors(int y, int x) {
     for(int colEdge = -1; colEdge<=0;colEdge++){
       int rowBounds = y+rowEdge;
       int colBounds = x+colEdge;
-      if((rowEdge == 0 && colEdge == 0) && rowBounds >= grid.length || colBounds >=grid[0].length){
-         n+=grid[rowBounds][colBounds];
+      if((rowEdge == 0 && colEdge == 0)){
+        System.out.print("you");
+      }else{
+      if( rowBounds >= 0 && rowBounds<grid.length && colEdge >= 0 &&  colBounds < grid[0].length){
+        n+=grid[rowBounds][colBounds];
       }
-      
     }
   }
-  
+    }
+      
   return n;
 }
 
@@ -75,7 +79,7 @@ void showGrid() {
       } else {
         fill(0, 0, 0);
       }
-       square(c*SPACING, r*SPACING, SPACING);
+      square(c*SPACING, r*SPACING, SPACING);
     }
   }
 
