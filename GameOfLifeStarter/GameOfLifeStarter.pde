@@ -4,13 +4,11 @@ final int SPACING = 5; // each cell's width/height //<>// //<>//
 final float DENSITY = .1; // how likely each cell is to be alive at the start
 int[][] grid; // the 2D array to hold 0's and 1's
 //(GLOBALS)
-int age = 0;
+int age = 0;//controls age counter
 int t = 10;//controls frameRate
 int red = 255;//changes red values
 int green = 0;//changes green value
 int blue = 0;//changes blue value
-int x = 0;//X value of neighbor
-int y = 0;//Y value of neighbor
 boolean paused = false;//checks pause
 
 void setup() {
