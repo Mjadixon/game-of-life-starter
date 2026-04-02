@@ -19,7 +19,7 @@ void setup() {
   noStroke(); // don't draw the edges of each cell
   frameRate(t); // controls speed of regeneration
   grid = new int[height / SPACING][width / SPACING];
-  //sets 1 or 0 dependsing on density
+  //sets 1 or 0 depending on density
   for (int i = 0; i<grid.length; i++) {
     for (int j = 0; j<grid[0].length; j++) {
       double r = Math.random();
@@ -39,10 +39,10 @@ void draw() {
   fill(255);
   textSize(14);
   text("Age: " + age, 40, 20);
-  if(!paused){
+  if (!paused) {
     age++;
   }
-   // uncomment this after you get showGrid() working
+  // uncomment this after you get showGrid() working
 }
 
 int[][] calcNextGrid() {
@@ -73,7 +73,7 @@ int countNeighbors(int y, int x) {
   // don't check out-of-bounds cells!
   int n = 0; // don't count yourself!
   for (int rowEdge = -1; rowEdge <=1; rowEdge++ ) { // calculates edge on left and right not including itself
-    for (int colEdge = -1; colEdge<=1; colEdge++) { // calculates edge up and down
+    for (int colEdge = -1; colEdge<=1; colEdge++) { // calculates edge up and down /= to itself
       int rowBounds = y+rowEdge; //sets Bounds for row
       int colBounds = x+colEdge; // sets bounds for columns
       if ((rowEdge == 0 && colEdge == 0)) { //excludes self (used for testing when needed)
@@ -90,11 +90,13 @@ int countNeighbors(int y, int x) {
 }//draws more squares (found out you can draw when pasued, but you cant see it drawing)
 void mouseDragged() {
   //grabs x and y values
-  int mouseLx = mouseX /SPACING;
-  int mouseLy = mouseY / SPACING;
-  //adds mousex and mousey values to grid and checks bounds (I made it so you can only add cells. make it just equal then it deletes too)
-  if ( mouseLy >= 0 && mouseLy<grid.length && mouseLx >= 0 &&  mouseLx < grid[0].length) {
-    grid[mouseLy][mouseLx] += 1-grid[mouseLy][mouseLx];//adds to grid new cell
+  if (mouseButton == LEFT) {
+    int mouseLx = mouseX /SPACING;
+    int mouseLy = mouseY / SPACING;
+    //adds mousex and mousey values to grid and checks bounds (I made it so you can only add cells. make it just equal then it deletes too)
+    if ( mouseLy >= 0 && mouseLy<grid.length && mouseLx >= 0 &&  mouseLx < grid[0].length) {
+      grid[mouseLy][mouseLx] += 1-grid[mouseLy][mouseLx];//adds to grid new cell
+    }
   }
 }//key presses
 void keyPressed() {
@@ -130,9 +132,9 @@ void showGrid(int green, int blue) {
   for (int r = 0; r<grid.length; r++) {
     for (int c = 0; c<grid[0].length; c++) {
       if (grid[r][c] == 1) {
-        fill(red, green, blue);
-        if(mousePressed == true && mouseButton == RIGHT){
-        fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+        fill(red, green*(int)(Math.random()*100), blue);
+        if (mousePressed == true && mouseButton == RIGHT) {
+          fill((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
         }
       } else {
         fill(0, 0, 0);
