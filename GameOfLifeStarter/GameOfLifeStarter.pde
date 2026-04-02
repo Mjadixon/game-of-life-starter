@@ -3,6 +3,7 @@ import java.util.Arrays;
 final int SPACING = 5; // each cell's width/height //<>// //<>//
 final float DENSITY = .1; // how likely each cell is to be alive at the start
 int[][] grid; // the 2D array to hold 0's and 1's
+
 //(GLOBALS)
 int age = 0;//controls age counter
 int t = 10;//controls frameRate
@@ -60,9 +61,7 @@ int[][] calcNextGrid() {
       }
     }
   }
-
   // your code here
-
   return nextGrid;
 }
 
@@ -83,9 +82,9 @@ int countNeighbors(int y, int x) {
       }
     }
   }
-
   return n;
-}//draws more squares (found out you can draw when pasued, but you cant see it drawing)
+}
+//draws more squares (found out you can draw when pasued, but you cant see it drawing)
 void mouseDragged() {
   //grabs x and y values
   if (mouseButton == LEFT) {
@@ -96,7 +95,8 @@ void mouseDragged() {
       grid[mouseLy][mouseLx] += 1-grid[mouseLy][mouseLx];//adds to grid new cell
     }
   }
-}//key presses
+}
+//key presses
 void keyPressed() {
   //speeds up
   if ( keyCode == UP ) {
@@ -140,7 +140,6 @@ void showGrid(int green, int blue) {
       square(c*SPACING, r*SPACING, SPACING);
     }
   }
-
   // use fill(r, g, b) to control color: black for empty, red for filled (or alive)
   // each square (cell) has a width and height of SPACING.
   // you will need to calculate the x and y position as you loop through the grid
