@@ -50,6 +50,7 @@ int[][] calcNextGrid() {
     for (int c = 0; c<grid[0].length; c++) {
       int neighbor = countNeighbors(r, c);//uses count neighbor
       int cell = grid[r][c];
+      
       //if cell is at 1 and neighbor 2 or 3 is on edge
       if (cell == 1 && (neighbor == 2 || neighbor == 3)) {
         nextGrid[r][c] = 1;//alive and healthy
@@ -84,16 +85,16 @@ int countNeighbors(int y, int x) {
   }
   return n;
 }
-//draws more squares (found out you can draw when pasued, but you cant see it drawing)
+//draws more squares change grid to += for drawing tool or -= for delete tool (found out you can draw when pasued, but you cant see it drawing)
 void mouseDragged() {
   //grabs x and y values
   if (mouseButton == LEFT) {
     int mouseLx = mouseX /SPACING;
     int mouseLy = mouseY / SPACING;
-    //adds mousex and mousey values to grid and checks bounds (I made it so you can only add cells. make it just equal then it deletes too)
+   //adds mousex and mousey values to grid and checks bounds (I made it so you can only add cells. make it just equal then it deletes too)
     if ( mouseLy >= 0 && mouseLy<grid.length && mouseLx >= 0 &&  mouseLx < grid[0].length) {
       grid[mouseLy][mouseLx] += 1-grid[mouseLy][mouseLx];//adds to grid new cell
-    }
+    } 
   }
 }
 //key presses
