@@ -11,7 +11,7 @@ int green = 0;//changes green value
 int blue = 0;//changes blue value
 int x = 0;//X value of neighbor
 int y = 0;//Y value of neighbor
-boolean paused = false;//pause
+boolean paused = false;//checks pause
 
 void setup() {
   // STEP 1 - Populate initial grid (you may want to use Arrays.toString to check it)
@@ -39,7 +39,10 @@ void draw() {
   fill(255);
   textSize(14);
   text("Age: " + age, 40, 20);
-  age++; // uncomment this after you get showGrid() working
+  if(!paused){
+    age++;
+  }
+   // uncomment this after you get showGrid() working
 }
 
 int[][] calcNextGrid() {
